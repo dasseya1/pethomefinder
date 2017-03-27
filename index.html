@@ -28,17 +28,110 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Find a Sitter</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#becomeSitter">Find a Sitter</a></li>
 					<li><a href="#">How it Works</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Log In</a></li>
 					<li><a href="#">Sign Up</a></li>
-					<li><a href="#">Become a Sitter</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#findSitter">Become a Sitter</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div>
 	</nav>
+
+	<!-- Modal becomeSitter-->
+          <div id="becomeSitter" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content becomeSitter-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Begin Your Journey</h4>
+                </div>
+                <div class="modal-body">
+                  <form>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input id="name" type="text" class="form-control" name="name" placeholder="Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                      <input id="address" type="text" class="form-control" placeholder="Zip or Address">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                      <input id="date" type="text" class="form-control" name="daterange" value="01/01/2015 - 01/31/2015">
+                    </div>
+                  </div>
+                  <div class="form-group row form-inline" style="margin-top:35px;">               
+                    <label for="size">Dog or Cat:</label>
+                    <select class="form-contorl" id="petType">
+                      <option id="dog">Dog</option>
+                      <option id="cat">Cat</option>
+                    </select>                    
+                    <label for="size" style="margin-left: 35px;">Pet Size:</label>
+                    <select class="form-contorl" id="petSize">
+                      <option id="small">1-20 lb</option>
+                      <option id="medium">20-40 lb</option>
+                      <option id="large">40-60 lb</option>
+                    </select>         
+                  </div>                  
+                  <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-top:30px;">Close</button>
+                  <button id="becomeSitterSearch" type="submit" class="btn btn-default" style="margin-top:30px;">Submit</button>
+                </form>
+                  
+                </div>
+              </div>
+
+            </div>
+          </div><!-- End Modal becomeSitter -->
+
+          <!-- Modal findSitter-->
+          <div id="findSitter" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content findSitter-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Begin Your Journey</h4>
+                </div>
+                <div class="modal-body">
+                  <form>
+                  <div class="form-group row form-inline" style="margin-top:35px;">               
+                    <label for="size">Dog or Cat:</label>
+                    <select class="form-contorl" id="petType">
+                      <option>Dog</option>
+                      <option>Cat</option>
+                    </select>                    
+                    <label for="size" style="margin-left: 35px;">Pet Size:</label>
+                    <select class="form-contorl" id="petSize">
+                      <option>1-20 lb</option>
+                      <option>20-40 lb</option>
+                      <option>40-60 lb</option>
+                    </select>         
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                      <input type="text" class="form-control" name="daterange" value="01/01/2015 - 01/31/2015">
+                    </div>
+                  </div>
+                </div>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button id="findSitterSearch" type="submit" class="btn btn-default">Submit</button>
+                </form>
+                </div>
+
+            </div>
+          </div><!-- End Modal findSitter -->
 
 
 	<div id="map"></div>
