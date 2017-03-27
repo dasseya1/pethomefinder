@@ -1,0 +1,61 @@
+body {
+	font-size: 1.6em;
+}
+
+.site-wrapper {
+	background: url('../images/background.jpg') no-repeat center center;
+	min-height: 100%;
+	background-size: cover;
+}
+
+.masthead-brand {
+	font-size: 40px;
+}
+
+
+.calendar {
+	color: #000;
+}
+
+.modal-content {
+	background-color: #03A9F4;
+	color: white;
+	text-align: center;
+	width: 70%;
+	height: 500px;
+	margin: 0 auto;
+}
+
+.nav-link {
+	font-size: 1.3em;
+}
+
+.cover {
+	background-color: #00BCD4;
+	padding: 20px;
+	border-radius: 25px;
+	opacity: 0.9;
+}
+
+.form-group {
+	margin-bottom: 20px;
+	text-align: left;
+	margin-left: 12px;
+}
+
+select {
+	color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
