@@ -1,5 +1,6 @@
 body {
-	font-size: 1.6em;
+	font-size: 1.3em;
+	font-family: 'Crimson Text', Georgia, Times, serif;
 }
 
 .site-wrapper {
@@ -31,10 +32,12 @@ body {
 }
 
 .cover {
-	background-color: #00BCD4;
-	padding: 20px;
-	border-radius: 25px;
-	opacity: 0.9;
+	    background-color: #00BCD4;
+    padding: 15px;
+    border-radius: 25px;
+    opacity: 0.8;
+    width: 70%;
+    margin: 0 auto;
 }
 
 .form-group {
@@ -47,15 +50,49 @@ select {
 	color: black;
 }
 
+.navbar {
+	position: relative;
+	margin-top: 0;
+	margin-bottom: 0;
+	border-radius: 0;
+	padding:12px;
+	font-family: 'Allerta', Helvetica, Arial, sans-serif;
+	background-color: #00BCD4;
+}
 
+.navbar li {
+	font-size: 16px;
+}
 
+.navbar-right {
+	margin-right: 40px;
+}
 
+#logo {
+	position: absolute;
+	margin-top: -16px;
+	margin-left: 35px;
+}
+#links {
+	margin-left:90px;
+}
 
+.btn {
+	
+	font-size: 20px;
+}
 
+label {
+	font-size: 1.6em;
+}
 
+#petType, #petSize, .cal {
+	font-size: 1.4em;
+}
 
-
-
-
-
-
+#petType {
+	margin-top: -10px;
+}
+#petType[select] {
+	margin-bottom:10px;
+}

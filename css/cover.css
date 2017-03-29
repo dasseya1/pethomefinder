@@ -3,10 +3,15 @@
  */
 
 /* Links */
-a,
-a:focus,
-a:hover {
+a, a:focus
+ {
   color: #fff;
+}
+
+
+a:hover {
+  color: #00BCD4;
+  border-radius: 10px;
 }
 
 /* Custom default button */
@@ -99,9 +104,6 @@ body {
   }
   .nav-masthead {
     float: right;
-  }
-  .nav {
-    margin-top:32px;
   }
 }
 

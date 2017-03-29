@@ -9,6 +9,9 @@
 
     <title>Pet Home Finder</title>
 
+     <link href='http://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Allerta' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     
 
@@ -36,25 +39,32 @@
 
   <body>
 
+    <nav class="navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a href="index.html" class="navbar-brand" ><img id="logo" src="images/logo.png" class="img-responsive" width="55" height="55"></a>
+          </div>
+          <ul class="nav navbar-nav" id="links">
+            <li><a class="nav-link active" href="index.html">Home</a></li>
+            <li><a class="nav-link" href="about.html">About</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+          </ul>
+        </div>
+      </nav>
+
     <div class="site-wrapper">
 
       <div class="site-wrapper-inner">
 
         <div class="cover-container">
 
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">PetHomeFinder</h3>
-              <nav class="nav nav-masthead">
-                <a class="nav-link" href="index.html">Home</a>
-                <a class="nav-link active" href="about.html">About</a>
-              </nav>
-            </div>
-          </div>
-
           <div class="inner cover">
             <h1 class="cover-heading">The best people to watch your pet</h1>
             <p class="lead">We know it’s hard to find someone you trust to care for your pup when you’re away. That’s why our in-house team finds the best people to watch your pet by hand-selecting and vetting every sitter.</p>
+            <div id="map"></div>
             <img src="images/aboutPicture.jpg" class="img-rounded img-responsive" alt="Cinque Terre"><br>
             <div class="row" style="text-align: left">
               <div class="col-sm-6">
@@ -67,26 +77,25 @@
               </div>
             </div>
           </div>
-
-          
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Copyright PetHomeFinder 2017</p>
-            </div>
-          </div>
-
         </div>
 
       </div>
 
     </div>
 
+
+
+  
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <!-- Include Date Range Picker -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <script src="js/script.js"></script>
+  <script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABpgODVwqQcdbN1aKHAdx6QFnM2iQXMr0&callback=initMap">
+  </script>
         <script type="text/javascript">
           $(function() {
               $('input[name="daterange"]').daterangepicker();

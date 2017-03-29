@@ -56,5 +56,3 @@ function initMap() {
 		})(marker, i));
 	}
 }
-
- 
