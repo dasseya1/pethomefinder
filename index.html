@@ -67,7 +67,7 @@
                   <h3 class="modal-title">Become a Sitter</h3>
                 </div>
                 <div class="modal-body">
-                  <form>
+                  <form id="sitterForm">
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -87,12 +87,12 @@
                     </div>
                   </div>
                   <div class="form-group row form-inline" style="margin-top:35px;">               
-                    <label for="size">Dog or Cat:</label>
+                    <label for="petType">Dog or Cat:</label>
                     <select class="form-contorl" id="petType">
-                      <option id="dog">Dog</option>
-                      <option id="cat">Cat</option>
+                      <option id="dog" value="Dog">Dog</option>
+                      <option id="cat" value="Cat">Cat</option>
                     </select>                    
-                    <label for="size" style="margin-left: 35px;">Pet Size:</label>
+                    <label for="petSize" style="margin-left: 35px;">Pet Size:</label>
                     <select class="form-contorl" id="petSize">
                       <option id="small">1-20 lb</option>
                       <option id="medium">20-40 lb</option>
@@ -159,23 +159,27 @@
 
   <div id="map"></div>
 
- <script async defer 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABpgODVwqQcdbN1aKHAdx6QFnM2iQXMr0&callback=initMap">
-  </script>
-  <script src="js/script.js"></script>
  
+<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 
-  <script
+<script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABpgODVwqQcdbN1aKHAdx6QFnM2iQXMr0&callback=initMap">
+</script>
+
+<script
       src="https://code.jquery.com/jquery-2.2.4.min.js"
       integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
       crossorigin="anonymous"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="js/script.js"></script>
+ 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <!-- Include Date Range Picker -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-        <script type="text/javascript">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<script type="text/javascript">
           $(function() {
               $('input[name="daterange"]').daterangepicker();
           });

@@ -1,3 +1,50 @@
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBhI4PHzfxptoOUJnW2FkrRI4w11o7_fAI",
+    authDomain: "gw-pet-project.firebaseapp.com",
+    databaseURL: "https://gw-pet-project.firebaseio.com",
+    storageBucket: "gw-pet-project.appspot.com",
+    messagingSenderId: "1010431917406"
+  };
+  firebase.initializeApp(config);
+
+  // Create a variable to reference the database
+var database = firebase.database();
+
+$("#becomeSitterSearch").on("click", function(event) {
+  // prevent form from trying to submit
+  event.preventDefault();
+  // set initial values of inputs
+  var name = "";
+  var address = "";
+  var petType = "";
+  var petSize = "";
+ 
+
+  // Get the input values from the form fields
+  name = $("#name").val().trim();
+  address = $("#address").val().trim();
+  petType = $("#petType option:selected").text();
+  petSize= $("#petSize option:selected").text();
+  $("#sitterForm").html("<h3>Your information has been submitted successfully</h3>")
+                  .addClass("alert alert-success fade in");
+
+  // push results to firebase by setting the keys and values of the keys
+  database.ref().push({
+		name: name,
+		address: address,
+		petType: petType,
+		petSize: petSize
+	});
+});
+
+database.ref().on("child_added", function(becomeSitter) {
+	console.log(becomeSitter.val());
+
+
+});
+
+
 function initMap() {
     
 	//Declared variables for locations to be put on the map
