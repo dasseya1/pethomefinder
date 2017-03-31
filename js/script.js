@@ -7,9 +7,24 @@
     messagingSenderId: "1010431917406"
   };
   firebase.initializeApp(config);
+  
+  //Geo code to get Long and Lat
+  var geocoder = new google.maps.Geocoder();
+	var longitude = "";
+	var latitude = "";
+	var address = "";
+
+  
+  	  geocoder.geocode( { 'address': address}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+    			latitude = results[0].geometry.location.lat();
+    			longitude = results[0].geometry.location.lng();
+    	} 
+		});
+  
 
   // Create a variable to reference the database
-var database = firebase.database();
+	var database = firebase.database();
 
 $("#becomeSitterSearch").on("click", function(event) {
   // prevent form from trying to submit
@@ -19,28 +34,40 @@ $("#becomeSitterSearch").on("click", function(event) {
   var address = "";
   var petType = "";
   var petSize = "";
+	
  
-
   // Get the input values from the form fields
   name = $("#name").val().trim();
   address = $("#address").val().trim();
   petType = $("#petType option:selected").text();
   petSize= $("#petSize option:selected").text();
+
   $("#sitterForm").html("<h3>Your information has been submitted successfully</h3>")
                   .addClass("alert alert-success fade in");
-
-  // push results to firebase by setting the keys and values of the keys
+                  
+	console.log("my long is :" + longitude);
+	
+	geocoder.geocode( { 'address': address}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+    		latitude = results[0].geometry.location.lat();
+    		longitude = results[0].geometry.location.lng();
+    	} 
+    	
+    		  // push results to firebase by setting the keys and values of the keys
   database.ref().push({
 		name: name,
 		address: address,
 		petType: petType,
-		petSize: petSize
+		petSize: petSize,
+		longitude: longitude,
+		latitude: latitude
+	});
+	
 	});
 });
 
 database.ref().on("child_added", function(becomeSitter) {
 	console.log(becomeSitter.val());
-
 
 });
 
