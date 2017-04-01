@@ -53,7 +53,7 @@ $("#becomeSitterSearch").on("click", function(event) {
     		longitude = results[0].geometry.location.lng();
     	} 
     	
-    		  // push results to firebase by setting the keys and values of the keys
+  // push results to firebase by setting the keys and values of the keys
   database.ref().push({
 		name: name,
 		address: address,
@@ -63,12 +63,11 @@ $("#becomeSitterSearch").on("click", function(event) {
 		latitude: latitude
 	});
 	
-	});
+});
 });
 
 database.ref().on("child_added", function(becomeSitter) {
-	console.log(becomeSitter.val());
-
+ console.log(becomSitter);
 });
 
 
