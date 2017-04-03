@@ -71,6 +71,8 @@ $("#findSitterSearch").on("click", function(event) {
 	console.log(petSize);
 	console.log(petType);
 	
+
+	
 	var ref = firebase.database().ref();
 	ref.orderByChild("petType")
 		 .equalTo(petType)
@@ -80,8 +82,10 @@ $("#findSitterSearch").on("click", function(event) {
 
 });
 
-		
-
+	//redirect to the page availablehosts.html once the submit button is clicked
+	function redirect() {
+	$('#frmFind').attr('action', 'availablehosts.html');		
+	}
 
 // // function initMap() {
     
