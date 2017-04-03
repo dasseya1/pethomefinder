@@ -5,6 +5,9 @@ body {
 	padding: 0;
 }
 #map {
-	margin-top: 0;
-	height: 100%;
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
 }

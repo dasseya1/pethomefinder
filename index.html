@@ -123,13 +123,13 @@
                 <div class="modal-body">
                   <form>
                   <div class="form-group row form-inline" style="margin-top:35px;">               
-                    <label for="size">Dog or Cat:</label>
-                    <select class="form-contorl" id="petType">
+                    <label for="fpetType">Dog or Cat:</label>
+                    <select class="form-contorl" id="fpetType">
                       <option>Dog</option>
                       <option>Cat</option>
                     </select>                    
-                    <label for="size" style="margin-left: 35px;">Pet Size:</label>
-                    <select class="form-contorl" id="petSize">
+                    <label for="fpetSize" style="margin-left: 35px;">Pet Size:</label>
+                    <select class="form-contorl" id="fpetSize">
                       <option>1-20 lb</option>
                       <option>20-40 lb</option>
                       <option>40-60 lb</option>
@@ -138,12 +138,12 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                      <input type="text" class="form-control cal" name="daterange" value="01/01/2015 - 01/31/2015">
+                      <input type="text" class="form-control cal" name="daterange" value="04/01/2017 - 04/30/2017">
                     </div>
                   </div>
                 </div>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button id="findSitterSearch" type="submit" class="btn btn-default">Submit</button>
+                  <button  onClick = "location.href='availablehosts.html'" id="findSitterSearch" type="submit" class="btn btn-default">Submit</button>
                 </form>
                 </div>
 
@@ -233,22 +233,15 @@
     </div>
 
 
-
-  <div id="map"></div>
-
  
 <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 
-<script async defer 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABpgODVwqQcdbN1aKHAdx6QFnM2iQXMr0&callback=initMap">
-</script>
 
 <script
       src="https://code.jquery.com/jquery-2.2.4.min.js"
       integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
       crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyABpgODVwqQcdbN1aKHAdx6QFnM2iQXMr0"></script>
 <script src="js/script.js"></script>
 <script src="js/login.js"></script>
   <script src="js/registration-form-validation.js"></script>
