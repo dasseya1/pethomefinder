@@ -9,6 +9,7 @@
   };
   firebase.initializeApp(config);
 
+
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);

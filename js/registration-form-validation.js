@@ -1,48 +1,125 @@
 // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBhI4PHzfxptoOUJnW2FkrRI4w11o7_fAI",
-    authDomain: "gw-pet-project.firebaseapp.com",
-    databaseURL: "https://gw-pet-project.firebaseio.com",
-    projectId: "gw-pet-project",
-    storageBucket: "gw-pet-project.appspot.com",
-    messagingSenderId: "1010431917406"
-  };
-  firebase.initializeApp(config);
+  // var config = {
+  //   apiKey: "AIzaSyBhI4PHzfxptoOUJnW2FkrRI4w11o7_fAI",
+  //   authDomain: "gw-pet-project.firebaseapp.com",
+  //   databaseURL: "https://gw-pet-project.firebaseio.com",
+  //   projectId: "gw-pet-project",
+  //   storageBucket: "gw-pet-project.appspot.com",
+  //   messagingSenderId: "1010431917406"
+  // };
+  // firebase.initializeApp(config);
 
-// Function which is called onSubmit
-function formValidation() {
-	var uemail = document.registration.email;
-	var passid = document.registration.passid;
+// Sign Up button press
+  function handleSignUp() {
+  	var email = document.getElementById('email').value;
+  	var password = document.getElementById('password').value;
+  	if (email.length < 4) {
+  		alert("Please enter an email address.");
+  		return;	
+  	}
+  	if (password.length < 4) {
+  		alert('Please enter a password.');
+  		return;
+  	}
+// Sign in with email and pass.
+// Start createwithemail
+	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+	  // Handle Errors here.
+	  	var errorCode = error.code;
+	  	var errorMessage = error.message;
+	  	// [start exclude]
+	  	if (errorCode === 'auth/weak-password') {
+	  	alert("The password is too weak.");
+	  	} else {
+	  	alert(errorMessage);
+	  	}
+	  	console.log(error);
+	  	// [end exclude]
+	});
+  } //Closes the function handleSignUp
+   
+// Sign in button press
+function toggleSignIn() {
+	if (firebase.auth().currentUser) {
+		// [start signout]
+		firebase.auth().signout();
+		// [end signout]
+	} else {
+		var email = document.getElementById('email').value;
+		var password = document.getElementById('password').value;
+		if (email.length < 4) {
+			alert("Please enter an email address.");
+			return;
+		}
+		if (password.lenth < 4) {
+			alert("Please enter a password.");
+			return;
+		}
 
-if(passid_validation(passid,7,12))   
-{  
-if(ValidateEmail(uemail))  
-{  
-}  
-}  
-return false;  
-}  
-
-// Function for validating password
-function passid_validation(passid, mx, my) {
-	var passid_len = passid.value.length;
-	if (passid_len === 0 || passid_len >= my || passid_len < mx) {
-		alert("Password should not be empty / length between "+mx+" to "+my)
-		passid.focus();
-		return false;
+		// Log (sign) in existing users
+		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+	  	// Handle Errors here.
+		  var errorCode = error.code;
+		  var errorMessage = error.message;
+		  // [start exclude]
+		  if (errorCode === 'auth/wrong-password') {
+		  	alert('Wrong password.');
+		  } else {
+		  	alert(errorMessage);
+		  }
+		  console.log(error);
+		  document.getElementById('quickstart-sign-in').disabled = false;
+		  // [end exclude]
+		}); 
+		// [end authwithemail]
 	}
-	return true;
-} // End of passid_validation function
-
-// Function for validating email format
-function ValidateEmail(uemail) {
-	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	if(uemail.value.match(mailformat)) {
-		return true;
-	}
-	else {
-		alert("You have entered an invalid email address!");
-		uemail.focus();
-		return false;
-	}
+	document.getElementById('quickstart-sign-in').disabled = true;  
 }
+
+// Set an authentication state observer and get user data
+function initApp() {
+
+	firebase.auth().onAuthStateChanged(function(user) {
+		// [start authstatelistener]
+
+	  if (user) {
+	    // User is signed in.
+	    var displayName = user.displayName;
+	    var email = user.email;
+	    var emailVerified = user.emailVerified;
+	    var photoURL = user.photoURL;
+	    var isAnonymous = user.isAnonymous;
+	    var uid = user.uid;
+	    var providerData = user.providerData;
+	    // [start exclude]
+	    document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
+	    document.getElementById('quickstart-sign-in').textContent = 'Sign out';
+	    document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+	    if (!emailVerified) {
+	    	document.getElementById('quickstart-verify-email').disabled = false;
+	      }
+	      // [END_EXCLUDE]
+	    } else {
+	      // User is signed out.
+	      // [START_EXCLUDE]
+	      document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
+	      document.getElementById('quickstart-sign-in').textContent = 'Sign in';
+	      document.getElementById('quickstart-account-details').textContent = 'null';
+	      // [END_EXCLUDE]
+	    }
+	    // [START_EXCLUDE silent]
+	    document.getElementById('quickstart-sign-in').disabled = false;
+	    // [END_EXCLUDE]
+	  });
+	  // [END authstatelistener]
+
+	  document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
+	  document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
+	  // document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
+	  // document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
+	}
+
+	window.onload = function() {
+	  initApp();
+	};
+

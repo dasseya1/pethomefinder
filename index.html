@@ -38,8 +38,8 @@
             <li><a class="nav-link" href="about.html">About</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#signUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#logIn"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
           </ul>
         </div>
       </nav>
@@ -165,18 +165,18 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input id="email" type="text" name="email" class="form-control cal" name="email" placeholder="Your Email">
+                      <input id="email" type="text" name="email" class="form-control cal" placeholder="Your Email">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                      <input id="password" type="text" name="passid" class="form-control cal" placeholder="Your Password">
+                      <input id="password" type="text" name="password" class="form-control cal" placeholder="Your Password">
                     </div>
                   </div> 
                
                   <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-top:30px;">Close</button>
-                  <button id="signUpSubmit" type="submit" class="btn btn-default" style="margin-top:30px;">Submit</button>
+                  <button id="quickstart-sign-in" name="signin" type="submit" class="btn btn-default" style="margin-top:30px;">Log In</button>
                   <button class="fb-login-button" id="signUpFacebook" type="submit" class="btn btn-default" style="margin-top:30px;">Log in with Facebook</button>
                   <!-- <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div> -->
                 </form>
@@ -203,18 +203,18 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input id="email" type="text" name="email" class="form-control cal" name="email" placeholder="Enter Your Email">
+                      <input id="email" type="text" name="email" class="form-control cal" placeholder="Enter Your Email">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                      <input id="password" type="password" name="passid" class="form-control cal" placeholder="Enter a Password">
+                      <input id="password" type="password" name="password" class="form-control cal" placeholder="Enter a Password">
                     </div>
                   </div> 
                
                   <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-top:30px;">Close</button>
-                  <button id="signUpSubmit" type="submit" class="btn btn-default" style="margin-top:30px;">Submit</button>
+                  <button id="quickstart-sign-up" name="signup" type="submit" class="btn btn-default" style="margin-top:30px;">Sign Up</button>
                   <button class="fb-login-button" id="signUpFacebook" type="submit" class="btn btn-default" style="margin-top:30px;">Sign Up with Facebook</button>
                   <!-- <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div> -->
                 </form>
@@ -251,7 +251,7 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyABpgODVwqQcdbN1aKHAdx6QFnM2iQXMr0"></script>
 <script src="js/script.js"></script>
 <script src="js/login.js"></script>
-  <script src="js/registration-form-validation.js"></script>
+<script src="js/registration-form-validation.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
