@@ -44,11 +44,6 @@ $("#becomeSitterSearch").on("click", function(event) {
   $("#sitterForm").html("<h3>Your information has been submitted successfully</h3>")
                   .addClass("alert alert-success fade in");
                   
-	// geocoder.geocode( { 'address': address}, function(results, status) {
-	// 	if (status == google.maps.GeocoderStatus.OK) {
- //   		latitude = results[0].geometry.location.lat();
- //   		longitude = results[0].geometry.location.lng();
- //   	} 
     	
   // push results to firebase by setting the keys and values of the keys
   database.ref().push({
@@ -57,154 +52,112 @@ $("#becomeSitterSearch").on("click", function(event) {
 		petType: petType,
 		petSize: petSize,
 		longitude: longitude,
-		latitude: latitude
+		latitude: latitude,
+		petProfile: petProfile()
 	});
 	
 });
-// });
 
+// function initialize(){
+// 	var mapOptions = {
+// 		zoom: 13, 
+// 		center: new google.maps.LatLng(38.879970, -77.106770), 
+// 		mapTypeId: google.maps.MapTypeId.ROADMAP
+// 		};
+// 	var map = new google.maps.Map($("#map").get(0), mapOptions);
+// 	}
+
+	var petType;
+	var petSize;
+	var petProfile;
+	var geocoder = new google.maps.Geocoder();
 
 $("#findSitterSearch").on("click", function(event) {
 	event.preventDefault();
-	var petType = $("#fpetType option:selected").text();
-	var petSize = $("#fpetSize option:selected").text();
-	console.log(petSize);
-	console.log(petType);
+	petProfileLocal = fpetProfile();
+	console.log(petProfileLocal);
+	// Store
+	localStorage.setItem("petProfileLocal", petProfileLocal);
+
+	redirect();
 	
+});	
+mapG();
 
-	
-	var ref = firebase.database().ref();
-	ref.orderByChild("petType")
-		 .equalTo(petType)
-		 .on("child_added", function(snapshot) {
-		  var results = snapshot.val();
-	});
+function mapG(){
+	petProfileLocal = localStorage.petProfileLocal;
+	console.log(petProfileLocal);
 
-});
+    var ref = firebase.database().ref();
+    ref.orderByChild("petProfile")
+         .equalTo(petProfileLocal)
+         .on("child_added", function(snapshot) {
+          var data = snapshot.val();
 
-	//redirect to the page availablehosts.html once the submit button is clicked
-	function redirect() {
-	$('#frmFind').attr('action', 'availablehosts.html');		
+          console.log(data);
+          for (var i = 0; i < data.length; i++) {
+          	
+            var address = data[i].address;
+            console.log(address);
+            var marker;
+            geocoder.geocode({address: address}, function(results){
+                marker = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: map
+                });
+                // adds message balloon
+                var infoWindow = new google.maps.InfoWindow({
+                    content: "This is: <h3>" + address + "</h3>"
+                });
+                infoWindow.open(map, marker);
+            });
+          }
+    });
+
+localStorage.removeItem("petProfileLocal");
+}
+
+
+
+function redirect() {
+    window.location.href = 'availablehosts.html';
+}
+
+function petProfile(){
+	if ((petType === "Dog")&&(petSize === "1-20 lb")){
+		return "A";
+	} else if ((petType === "Dog")&&(petSize === "20-40 lb")){
+		return "B";
+	} else if ((petType === "Dog")&&(petSize === "40-60 lb")){
+		return "C";
+	} else if ((petType === "Cat")&&(petSize === "1-20 lb")){
+		return "D";
+	} else if ((petType === "Cat")&&(petSize === "20-40 lb")){
+		return "E";
+	} else if ((petType === "Cat")&&(petSize === "40-60 lb")){
+		return "F";
 	}
+}
 
-// // function initMap() {
-    
-// 	// //Declared variables for locations to be put on the map
-// 	// var georgewashington = {
-// 	// 	info: '<strong>The George Washington University</strong><br>\
-// 	// 				950 N Glebe Rd<br> Arlington, VA 22203<br>\
-// 	// 				<a href="#">Get Directions</a>',
-// 	// 	lat: 38.881487,
-// 	// 	long: -77.116197
-// 	// };
 
-// 	// var arlpubschools = {
-// 	// 	info: '<strong>Arlington Public Schools</strong><br>\
-// 	// 				1426 N Quincy St<br> Arlington, VA 22207<br>\
-// 	// 				<a href="#">Get Directions</a>',
-// 	// 	lat: 38.888454,
-// 	// 	long: -77.108744
-// 	// };
+function fpetProfile(){
 
-// 	// var chipotle = {
-// 	// 	info: '<strong>Chipotle Mexican Grill</strong><br>\r\
-// 	// 				4300 Wilson Blvd<br> Arlington, VA 22203<br>\
-// 	// 				<a href="#">Get Directions</a>',
-// 	// 	lat: 38.879694,
-// 	// 	long: -77.112697
-// 	// };
+	petType = $("#fpetType option:selected").text();
+	petSize = $("#fpetSize option:selected").text();
 
-// 	// var locations = [
-//  //     [georgewashington.info, georgewashington.lat, georgewashington.long, 0],
-//  //     [arlpubschools.info, arlpubschools.lat, arlpubschools.long, 1],
-//  //     [chipotle.info, chipotle.lat, chipotle.long, 2],
-//  //   ];
-    
-//  //   //Grab the map ID in the index file and add the map
-// 	// var map = new google.maps.Map(document.getElementById('map'), {
-// 	// 	zoom: 13,
-// 	// 	center: new google.maps.LatLng(38.879970, -77.106770),
-// 	// 	mapTypeId: google.maps.MapTypeId.ROADMAP
-// 	// });
-
-// 	// var infowindow = new google.maps.InfoWindow({});
-
-// 	// var marker, i;
-
-// 	// for (i = 0; i < locations.length; i++) {
-// 	// 	marker = new google.maps.Marker({
-// 	// 		position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-// 	// 		map: map
-// 	// 	});
-
-// 	// 	google.maps.event.addListener(marker, 'click', (function (marker, i) {
-// 	// 		return function () {
-// 	// 			infowindow.setContent(locations[i][0]);
-// 	// 			infowindow.open(map, marker);
-// 	// 		}
-// 	// 	})(marker, i));
-// 	// }
-
-		
-// 			// var geocoder = new google.maps.Geocoder();
-// 			// geocoder.geocode({address: "Fresno, CA"}, function(results) {
-// 			// 	var myLatLng = results[0].geometry.location;
-				
-// 			// 	var mapOptions = {
-// 			// 		zoom: 8, 
-// 			// 		center: myLatLng, 
-// 			// 		mapTypeId: google.maps.MapTypeId.ROADMAP
-// 			// 	};
-// 			// 	var map = new google.maps.Map($("#map").get(0), mapOptions);
-				
-// 			// 	var homeMarker = new google.maps.Marker({
-// 			// 		position: myLatLng,
-// 			// 		map: map
-// 			// 	});
-				
-// 			// 	var overlay = new google.maps.OverlayView();
-// 			// 	overlay.draw = function() {
-// 			// 		var point = overlay.getProjection().fromLatLngToContainerPixel(homeMarker.getPosition());
-// 			// 		$("#message").html("<h3>This is my home town</h3>");
-// 			// 		$("#message").show().css({top:point.y - 100, left:point.x - 75}); 
-// 			// 	};
-// 			// 	overlay.setMap(map);
-				
-// 			// 	var listener = google.maps.event.addListener(map, "click", function(event) {
-// 			// 		var fromMarker = new google.maps.Marker({
-// 			// 			position: event.latLng,
-// 			// 			map: map
-// 			// 		});
-// 			// 		google.maps.event.removeListener(listener);
-														
-// 			// 		var directionsRenderer = new google.maps.DirectionsRenderer();
-// 			// 		directionsRenderer.setMap(map);
-// 			// 		directionsRenderer.setPanel($("#directions").get(0));
-// 			// 		var request = {
-// 			// 			origin: homeMarker.getPosition(),
-// 			// 			destination: fromMarker.getPosition(),
-// 			// 			travelMode: google.maps.TravelMode.DRIVING
-// 			// 		};
-// 			// 		var directionsService = new google.maps.DirectionsService();
-// 			// 		directionsService.route(request, function(result, status) {
-// 			// 			if (status == google.maps.DirectionsStatus.OK) {
-// 			// 				directionsRenderer.setDirections(result);
-// 			// 			}
-// 			// 		});
-// 			// 	});
-// 			// });
-	
-	
-// }
-
-function initialize(){
-	var mapOptions = {
-		zoom: 13, 
-		center: new google.maps.LatLng(38.879970, -77.106770), 
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-	var map = new google.maps.Map($("#map").get(0), mapOptions);
+	if ((petType === "Dog")&&(petSize === "1-20 lb")){
+		return "A";
+	} else if ((petType === "Dog")&&(petSize === "20-40 lb")){
+		return "B";
+	} else if ((petType === "Dog")&&(petSize === "40-60 lb")){
+		return "C";
+	} else if ((petType === "Cat")&&(petSize === "1-20 lb")){
+		return "D";
+	} else if ((petType === "Cat")&&(petSize === "20-40 lb")){
+		return "E";
+	} else if ((petType === "Cat")&&(petSize === "40-60 lb")){
+		return "F";
 	}
-	google.maps.event.addDomListener(window, "load", initialize);
+}
 
 });

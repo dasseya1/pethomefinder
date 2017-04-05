@@ -12,16 +12,15 @@
     <link href='https://fonts.googleapis.com/css?family=Allerta' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    
-
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-
-
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="css/cover.css">
 
     <!-- Custom styles -->
     <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <script src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyABpgODVwqQcdbN1aKHAdx6QFnM2iQXMr0">
+    </script>
+ 
   </head>
 
   <body>
@@ -119,7 +118,7 @@
                   <h3 class="modal-title">Find a Sitter</h3>
                 </div>
                 <div class="modal-body">
-                  <form id="frmFind">
+                  <form id="frmFind" method="GET">
                   <div class="form-group row form-inline" style="margin-top:35px;">               
                     <label for="fpetType">Dog or Cat:</label>
                     <select class="form-contorl" id="fpetType">
@@ -141,7 +140,7 @@
                   </div>
                 </div>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button id="findSitterSearch" type="submit" class="btn btn-default" onClick='redirect()'>Submit</button>
+                  <button id="findSitterSearch" type="submit" class="btn btn-default">Submit</button>
                 </form>
                 </div>
 

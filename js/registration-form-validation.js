@@ -1,13 +1,13 @@
 // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBhI4PHzfxptoOUJnW2FkrRI4w11o7_fAI",
-    authDomain: "gw-pet-project.firebaseapp.com",
-    databaseURL: "https://gw-pet-project.firebaseio.com",
-    projectId: "gw-pet-project",
-    storageBucket: "gw-pet-project.appspot.com",
-    messagingSenderId: "1010431917406"
-  };
-  firebase.initializeApp(config);
+  // var config = {
+  //   apiKey: "AIzaSyBhI4PHzfxptoOUJnW2FkrRI4w11o7_fAI",
+  //   authDomain: "gw-pet-project.firebaseapp.com",
+  //   databaseURL: "https://gw-pet-project.firebaseio.com",
+  //   projectId: "gw-pet-project",
+  //   storageBucket: "gw-pet-project.appspot.com",
+  //   messagingSenderId: "1010431917406"
+  // };
+  // firebase.initializeApp(config);
 
 // Function which is called onSubmit
 function formValidation() {
