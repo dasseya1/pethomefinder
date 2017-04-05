@@ -1,106 +1,63 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Pet Home Finder</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
-	<link href="css/style.css" rel="stylesheet">
-</head>
-
-<body>
-<div id="fb-root"></div>
-<!-- <script>
-
-function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else {
-      // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    }
-  }
-
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1270222299679738',
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-    FB.AppEvents.logPageView();
-
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-
-  };
+    <title>Pet Sitter</title>
 
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) return;
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1270222299679738";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+  <link href='http://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Allerta' rel='stylesheet' type='text/css'>
 
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-  }
-</script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 
 
-	<nav class="navbar navbar-inverse bg-inverse navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">PetHomeFinder</a>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="css/cover.css">
 
-			</div>
-	
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="#" data-toggle="modal" data-target="#becomeSitter">Find a Sitter</a></li>
-					<li><a href="#">How it Works</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" data-toggle="modal" data-target="#logIn">Log In</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#signUp">Sign Up</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#findSitter">Become a Sitter</a></li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div>
-	</nav>
+    <!-- Custom styles -->
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+  </head>
 
-	<!-- Modal becomeSitter-->
+  <body>
+    <div id="fb-root"></div>
+      <nav class="navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a href="index.html" class="navbar-brand" ><img id="logo" src="images/logo.png" class="img-responsive" width="55" height="55"></a>
+          </div>
+          <ul class="nav navbar-nav" id="links">
+            <li><a class="nav-link active" href="index.html">Home</a></li>
+            <li><a class="nav-link" href="about.html">About</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" data-toggle="modal" data-target="#signUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#logIn"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+
+          <div class="inner cover">
+           <h1 class="cover-heading" style="font-size: 56px;">Pet Sitting Your Way</h1>
+            <p class="lead">With Pet Home Finder, your pet stays in a sitter’s home or yours, whether you’re traveling or just out for the day. Find the perfect pet sitter near you.</p>
+            <p class="lead">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#becomeSitter">Become a Sitter <span class="glyphicon glyphicon-user"></span></button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#findSitter" style="margin-left: 20px;">Find a Sitter <span class="glyphicon glyphicon-search"></span></button>
+            </p>
+          </div>
+
+          <!-- Modal becomeSitter-->
           <div id="becomeSitter" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
@@ -108,35 +65,35 @@ function statusChangeCallback(response) {
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Begin Your Journey</h4>
+                  <h3 class="modal-title">Become a Sitter</h3>
                 </div>
                 <div class="modal-body">
-                  <form>
+                  <form id="sitterForm">
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input id="name" type="text" class="form-control" name="name" placeholder="Name">
+                      <input id="name" type="text" class="form-control cal" name="name" placeholder="Name">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-                      <input id="address" type="text" class="form-control" placeholder="Zip or Address">
+                      <input id="address" type="text" class="form-control cal" placeholder="Zip or Address">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                      <input id="date" type="text" class="form-control" name="daterange" value="01/01/2015 - 01/31/2015">
+                      <input id="date" type="text" class="form-control cal" name="daterange" value="01/01/2015 - 01/31/2015">
                     </div>
                   </div>
                   <div class="form-group row form-inline" style="margin-top:35px;">               
-                    <label for="size">Dog or Cat:</label>
+                    <label for="petType">Dog or Cat:</label>
                     <select class="form-contorl" id="petType">
-                      <option id="dog">Dog</option>
-                      <option id="cat">Cat</option>
+                      <option id="dog" value="Dog">Dog</option>
+                      <option id="cat" value="Cat">Cat</option>
                     </select>                    
-                    <label for="size" style="margin-left: 35px;">Pet Size:</label>
+                    <label for="petSize" style="margin-left: 35px;">Pet Size:</label>
                     <select class="form-contorl" id="petSize">
                       <option id="small">1-20 lb</option>
                       <option id="medium">20-40 lb</option>
@@ -161,7 +118,7 @@ function statusChangeCallback(response) {
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Begin Your Journey</h4>
+                  <h3 class="modal-title">Find a Sitter</h3>
                 </div>
                 <div class="modal-body">
                   <form>
@@ -181,7 +138,7 @@ function statusChangeCallback(response) {
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                      <input type="text" class="form-control" name="daterange" value="01/01/2015 - 01/31/2015">
+                      <input type="text" class="form-control cal" name="daterange" value="01/01/2015 - 01/31/2015">
                     </div>
                   </div>
                 </div>
@@ -193,103 +150,118 @@ function statusChangeCallback(response) {
             </div>
           </div><!-- End Modal findSitter -->
 
-          <!-- Modal Log In-->
+          <!-- Modal logIn-->
           <div id="logIn" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
+              <!-- Modal content logIn-->
               <div class="modal-content">
-
-                <!-- Modal content Log In-->
-                <form class="form-horizontal">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h3 class="modal-title">Log In</h3>
+                </div>
+                <div class="modal-body">
+                  <form>
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input id="email" type="text" name="email" class="form-control cal" placeholder="Your Email">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                    <div class="col-sm-10">
-                      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                      <input id="password" type="text" name="password" class="form-control cal" placeholder="Your Password">
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-default">Log in</button>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-
-                      <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div>
-                      <!-- <img class="btn-hover" src="images/facebook-sign-in-button.png" alt="facebook login" data-fb="login" data-auto="login-fb-login"> -->
-
-                    </div>
-                  </div>
+                  </div> 
+               
+                  <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-top:30px;">Close</button>
+                  <button id="quickstart-sign-in" name="signin" type="submit" class="btn btn-default" style="margin-top:30px;">Log In</button>
+                  <button class="fb-login-button" id="signUpFacebook" type="submit" class="btn btn-default" style="margin-top:30px;">Log in with Facebook</button>
+                  <!-- <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div> -->
                 </form>
-
+                  
+                </div>
               </div>
-            </div>
-          </div><!-- End Log in -->
 
-          <!-- Modal Sign In-->
+            </div>
+          </div><!-- End Modal LogIn -->
+
+
+          <!-- Modal signUp-->
           <div id="signUp" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
+              <!-- Modal content signIn-->
               <div class="modal-content">
-
-          <!-- Modal content Sign In-->
-                <form class="form-horizontal">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h3 class="modal-title">Sign Up</h3>
+                </div>
+                <div class="modal-body">
+                  <form>
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Your Email*</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input id="email" type="text" name="email" class="form-control cal" placeholder="Enter Your Email">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Enter a Password*</label>
-                    <div class="col-sm-10">
-                      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                      <input id="password" type="password" name="password" class="form-control cal" placeholder="Enter a Password">
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-default">Create Account</button>
-                    </div>
-                  </div>
-                  <p> Or </p>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-
-                      <div class="fb-login-button" src="images/facebook-sign-in-button.png" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div>
-                      <!-- <img class="btn-hover" src="images/facebook-sign-in-button.png" alt="facebook login" data-fb="login" data-auto="login-fb-login"> -->
-
-                    </div>
-                  </div>
+                  </div> 
+               
+                  <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-top:30px;">Close</button>
+                  <button id="quickstart-sign-up" name="signup" type="submit" class="btn btn-default" style="margin-top:30px;">Sign Up</button>
+                  <button class="fb-login-button" id="signUpFacebook" type="submit" class="btn btn-default" style="margin-top:30px;">Sign Up with Facebook</button>
+                  <!-- <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div> -->
                 </form>
-
+                  
+                </div>
               </div>
+
             </div>
-          </div> <!-- End Sign in -->
+          </div><!-- End Modal signUp -->
 
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+  <div id="map"></div>
+
+ 
+<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+
+<script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABpgODVwqQcdbN1aKHAdx6QFnM2iQXMr0&callback=initMap">
+</script>
+
+<script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyABpgODVwqQcdbN1aKHAdx6QFnM2iQXMr0"></script>
+<script src="js/script.js"></script>
+<script src="js/login.js"></script>
+<script src="js/registration-form-validation.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<script type="text/javascript">
+          $(function() {
+              $('input[name="daterange"]').daterangepicker();
+          });
+    </script>
   
-	<div id="map"></div>
-
-	<script src="js/script.js"></script>
-  <script src="js/login.js"></script>
-	<script async defer 
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABpgODVwqQcdbN1aKHAdx6QFnM2iQXMr0&callback=initMap">
-	</script>
-
-	<script
-  		src="https://code.jquery.com/jquery-2.2.4.min.js"
-  		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  		crossorigin="anonymous"></script>
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
-	</script>
-
-</body>
-
+  </body>
 </html>
