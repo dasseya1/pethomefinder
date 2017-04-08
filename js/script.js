@@ -20,6 +20,7 @@ $(document).ready(function(){
 	var map;
     var bounds = new google.maps.LatLngBounds();
     var locations;
+    var aboutme = "About me:";
   
 
   // Create a variable to reference the database
@@ -67,16 +68,16 @@ $("#findSitterSearch").on("click", function(event) {
 
 
 function initialize() {
-    
     map = new google.maps.Map(
     document.getElementById("map"), {
         center: new google.maps.LatLng(37.4419, -122.1419),
         zoom: 13,
         mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
+    })
     geocoder = new google.maps.Geocoder();
 
         geocodeAddress(locations);
+        
 }
 google.maps.event.addDomListener(window, "load", initialize);
 
@@ -91,10 +92,11 @@ function geocodeAddress(locations) {
           var data = snapshot.val();
           
         locations = valuesToArray(data);
-
-     name = locations[2];
-    address = locations[0];
-    description = locations[1];
+        console.log(locations);
+        
+     var name = locations[2];
+    var address = locations[0];
+    var description = locations[1];
     geocoder.geocode({
         'address': locations[0]
     },
@@ -121,9 +123,9 @@ function geocodeAddress(locations) {
     localStorage.removeItem("petProfileLocal");
 }
 
-function infoWindow(marker, map, title, address, url) {
+function infoWindow(marker, map, name, address, description) {
     google.maps.event.addListener(marker, 'click', function () {
-        var html = "<div style='color:blue;'><h3>" + name + "</h3><p>" + address + "<br></div><p>" + description + "</p></div>";
+        var html = "<div style='color:blue;'><h3>" + name + "</h3><p>" + address + "</p><h5 style='text-decoration: underline;'>"+aboutme+"</h5><p>" + description + "</p></div>";
         iw = new google.maps.InfoWindow({
             content: html,
             maxWidth: 500
