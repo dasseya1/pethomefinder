@@ -80,7 +80,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-                      <input id="address" type="text" class="form-control cal" placeholder="Zip or Address">
+                      <input id="address" type="text" onFocus="geolocate()" class="form-control cal" placeholder="Zip or Address">
                     </div>
                   </div>
                   <div class="form-group">
@@ -246,7 +246,7 @@
       crossorigin="anonymous"></script>
 
 <script src="js/script.js"></script>
-<!--<script src="js/login.js"></script>-->
+<script src="js/getLocation.js"></script>
 <!--  <script src="js/registration-form-validation.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
