@@ -9,8 +9,7 @@ $(document).ready(function() {
     };
     firebase.initializeApp(config);
 
-
-
+   // Global variables
     var address = "";
     var name = "";
     var petType = "";
@@ -37,12 +36,13 @@ $(document).ready(function() {
         description = $("#description").val().trim();
         petType = $("#petType option:selected").text();
         petSize = $("#petSize option:selected").text();
-
+        
+        //This message appears when user clicks the submit button and info is sent successfully
         $("#sitterForm").html("<h3>Your information has been submitted successfully</h3>")
             .addClass("alert alert-success fade in");
 
 
-        // push results to firebase by setting the keys and values of the keys
+        // push results to firebase by setting the keys and values
         petinfo.push({
             name: name,
             address: address,
@@ -58,15 +58,16 @@ $(document).ready(function() {
     $("#findSitterSearch").on("click", function(event) {
         event.preventDefault();
         petProfileLocal = fpetProfile();
-        console.log(petProfileLocal);
-        // Store
+        
+        // Store search options selected by user on client side (local storage)
         localStorage.setItem("petProfileLocal", petProfileLocal);
 
+        //Redirect to the results page
         redirect();
 
     });
 
-
+    //Google maps API function starts here
     function initialize() {
         map = new google.maps.Map(
             document.getElementById("map"), {
@@ -83,16 +84,14 @@ $(document).ready(function() {
 
     function geocodeAddress(locations) {
         petProfileLocal = localStorage.petProfileLocal;
-        console.log(petProfileLocal);
         var geocoder = new google.maps.Geocoder();
         var ref = firebase.database().ref("classi/");
         ref.orderByChild("petProfile")
             .equalTo(petProfileLocal)
             .on("child_added", function(snapshot) {
                 var data = snapshot.val();
-
+                
                 locations = valuesToArray(data);
-                console.log(locations);
 
                 var name = locations[2];
                 var address = locations[0];
@@ -120,9 +119,11 @@ $(document).ready(function() {
                         }
                     });
             });
+        //Clear the local storage
         localStorage.removeItem("petProfileLocal");
     }
-
+    
+    //Add markers on the map
     function infoWindow(marker, map, name, address, description) {
         google.maps.event.addListener(marker, 'click', function() {
             var html = "<div style='color:blue;'><h3>" + name + "</h3><p>" + address + "</p><h5 style='text-decoration: underline;'>" + aboutme + "</h5><p>" + description + "</p></div>";
@@ -133,9 +134,9 @@ $(document).ready(function() {
             iw.open(map, marker);
         });
 
-        console.log("yes");
     }
-
+    
+    //Create the markers
     function createMarker(results) {
         var marker = new google.maps.Marker({
             icon: 'http://maps.google.com/mapfiles/ms/icons/blue.png',
@@ -151,11 +152,13 @@ $(document).ready(function() {
         infoWindow(marker, map, name, address, description);
         return marker;
     }
-
+    
+    //This function redirects to the availablehosts page
     function redirect() {
         window.location.href = 'availablehosts.html';
     }
 
+    //Combine two selected options to one and save it to firebase (for Pet Sitters)
     function petProfile() {
         if ((petType === "Dog") && (petSize === "1-20 lb")) {
             return "A";
@@ -172,7 +175,7 @@ $(document).ready(function() {
         }
     }
 
-
+    //Combine two selected options to one and save it to firebase (for Customers)
     function fpetProfile() {
 
         petType = $("#fpetType option:selected").text();
@@ -193,6 +196,7 @@ $(document).ready(function() {
         }
     }
 
+    //Transform muliple objects to an array of arrays
     function valuesToArray(obj) {
         return Object.keys(obj).map(function(key) {
             return obj[key];

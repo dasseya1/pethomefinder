@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -18,246 +18,266 @@
 
     <!-- Custom styles -->
     <link rel="stylesheet" type="text/css" href="css/custom.css">
-    <script src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyABpgODVwqQcdbN1aKHAdx6QFnM2iQXMr0"></script>
- 
-  </head>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyABpgODVwqQcdbN1aKHAdx6QFnM2iQXMr0&libraries=places" async defer></script>-->
+    <script type="text/javascript">
+        function init() {
+            var defaultBounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(37.09024, -95.712891)
+            );
+            var options = {
+                bounds: defaultBounds,
+                componentRestrictions: {
+                    country: 'us'
+                }
+            };
+            var input = document.getElementById('address');
+            var autocomplete = new google.maps.places.Autocomplete(input, options);
+        }
+        google.maps.event.addDomListener(window, 'load', init);
+    </script>
 
-  <body>
+</head>
+
+<body>
     <div id="fb-root"></div>
-      <nav class="navbar">
+    <nav class="navbar">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a href="index.html" class="navbar-brand" ><img id="logo" src="images/logo.png" class="img-responsive" width="55" height="55"></a>
-          </div>
-          <ul class="nav navbar-nav" id="links">
-            <li><a class="nav-link active" href="index.html">Home</a></li>
-            <li><a class="nav-link" href="about.html">About</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" data-toggle="modal" data-target="#signUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#logIn"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
-          </ul>
+            <div class="navbar-header">
+                <a href="index.html" class="navbar-brand"><img id="logo" src="images/logo.png" class="img-responsive" width="55" height="55"></a>
+            </div>
+            <ul class="nav navbar-nav" id="links">
+                <li><a class="nav-link active" href="index.html">Home</a></li>
+                <li><a class="nav-link" href="about.html">About</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" data-toggle="modal" data-target="#signUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#logIn"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+            </ul>
         </div>
-      </nav>
+    </nav>
 
     <div class="site-wrapper">
-      <div class="site-wrapper-inner">
-        <div class="cover-container">
+        <div class="site-wrapper-inner">
+            <div class="cover-container">
 
-          <div class="inner cover">
-           <h1 class="cover-heading" style="font-size: 56px;">Pet Sitting Your Way</h1>
-            <p class="lead">With Pet Home Finder, your pet stays in a sitter’s home or yours, whether you’re traveling or just out for the day. Find the perfect pet sitter near you.</p>
-            <p class="lead">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#becomeSitter">Become a Sitter <span class="glyphicon glyphicon-user"></span></button>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#findSitter" style="margin-left: 20px;">Find a Sitter <span class="glyphicon glyphicon-search"></span></button>
-            </p>
-          </div>
-
-          <!-- Modal becomeSitter-->
-          <div id="becomeSitter" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-              <!-- Modal content becomeSitter-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h3 class="modal-title">Become a Sitter</h3>
+                <div class="inner cover">
+                    <h1 class="cover-heading" style="font-size: 56px;">Pet Sitting Your Way</h1>
+                    <p class="lead">With Pet Home Finder, your pet stays in a sitter’s home or yours, whether you’re traveling or just out for the day. Find the perfect pet sitter near you.</p>
+                    <p class="lead">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#becomeSitter">Become a Sitter <span class="glyphicon glyphicon-user"></span></button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#findSitter" style="margin-left: 20px;">Find a Sitter <span class="glyphicon glyphicon-search"></span></button>
+                    </p>
                 </div>
-                <div class="modal-body">
-                  <form id="sitterForm">
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input id="name" type="text" class="form-control cal" name="name" placeholder="Name">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input id="description" type="text" class="form-control cal" name="description" placeholder="Tell us about you!">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-                      <input id="address" type="text" onFocus="geolocate()" class="form-control cal" placeholder="Zip or Address">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                      <input id="date" type="text" class="form-control cal" name="daterange" value="04/01/2017 - 04/30/2017">
-                    </div>
-                  </div>
 
-                  <div class="form-group row form-inline" style="margin-top:35px;">               
-                    <label for="petType">Dog or Cat:</label>
-                    <select class="form-contorl" id="petType">
+                <!-- Modal becomeSitter-->
+                <div id="becomeSitter" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content becomeSitter-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h3 class="modal-title">Become a Sitter</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form id="sitterForm">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input id="name" type="text" class="form-control cal" name="name" placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input id="description" type="text" class="form-control cal" name="description" placeholder="Tell us about you!">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                                            <input id="address" type="text" class="form-control cal" placeholder="Zip or Address">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            <input id="date" type="text" class="form-control cal" name="daterange" value="04/01/2017 - 04/30/2017">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row form-inline" style="margin-top:35px;">
+                                        <label for="petType">Dog or Cat:</label>
+                                        <select class="form-contorl" id="petType">
                       <option id="dog" value="Dog">Dog</option>
                       <option id="cat" value="Cat">Cat</option>
-                    </select>                    
-                    <label for="petSize" style="margin-left: 35px;">Pet Size:</label>
-                    <select class="form-contorl" id="petSize">
+                    </select>
+                                        <label for="petSize" style="margin-left: 35px;">Pet Size:</label>
+                                        <select class="form-contorl" id="petSize">
                       <option id="small">1-20 lb</option>
                       <option id="medium">20-40 lb</option>
                       <option id="large">40-60 lb</option>
                     </select>
-                  </div>                  
-                  <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-top:30px;">Close</button>
-                  <button id="becomeSitterSearch" type="submit" class="btn btn-default" style="margin-top:30px;">Submit</button>
-                </form>
-                  
+                                    </div>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-top:30px;">Close</button>
+                                    <button id="becomeSitterSearch" type="submit" class="btn btn-default" style="margin-top:30px;">Submit</button>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-              </div>
+                <!-- End Modal becomeSitter -->
 
-            </div>
-          </div><!-- End Modal becomeSitter -->
+                <!-- Modal findSitter-->
+                <div id="findSitter" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
 
-          <!-- Modal findSitter-->
-          <div id="findSitter" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-              <!-- Modal content findSitter-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h3 class="modal-title">Find a Sitter</h3>
-                </div>
-                <div class="modal-body">
-                  <form id="frmFind" method="GET">
-                  <div class="form-group row form-inline" style="margin-top:35px;">               
-                    <label for="fpetType">Dog or Cat:</label>
-                    <select class="form-contorl" id="fpetType">
+                        <!-- Modal content findSitter-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h3 class="modal-title">Find a Sitter</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form id="frmFind" method="GET">
+                                    <div class="form-group row form-inline" style="margin-top:35px;">
+                                        <label for="fpetType">Dog or Cat:</label>
+                                        <select class="form-contorl" id="fpetType">
                       <option>Dog</option>
                       <option>Cat</option>
-                    </select>                    
-                    <label for="fpetSize" style="margin-left: 35px;">Pet Size:</label>
-                    <select class="form-contorl" id="fpetSize">
+                    </select>
+                                        <label for="fpetSize" style="margin-left: 35px;">Pet Size:</label>
+                                        <select class="form-contorl" id="fpetSize">
                       <option>1-20 lb</option>
                       <option>20-40 lb</option>
                       <option>40-60 lb</option>
-                    </select>  
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                      <input type="text" class="form-control cal" name="daterange" value="04/01/2017 - 04/30/2017">
+                    </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            <input type="text" class="form-control cal" name="daterange" value="04/01/2017 - 04/30/2017">
+                                        </div>
+                                    </div>
+                            </div>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button id="findSitterSearch" type="submit" class="btn btn-default">Submit</button>
+                            </form>
+                        </div>
+
                     </div>
-                  </div>
                 </div>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button id="findSitterSearch" type="submit" class="btn btn-default">Submit</button>
-                </form>
+                <!-- End Modal findSitter -->
+
+                <!-- Modal logIn-->
+                <div id="logIn" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content logIn-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h3 class="modal-title">Log In</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input id="email" type="text" name="email" class="form-control cal" name="email" placeholder="Your Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                            <input id="password" type="text" name="passid" class="form-control cal" placeholder="Your Password">
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-top:30px;">Close</button>
+                                    <button id="signUpSubmit" type="submit" class="btn btn-default" style="margin-top:30px;">Submit</button>
+                                    <button class="fb-login-button" id="signUpFacebook" type="submit" class="btn btn-default" style="margin-top:30px;">Log in with Facebook</button>
+                                    <!-- <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div> -->
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+                <!-- End Modal LogIn -->
+
+
+                <!-- Modal signUp-->
+                <div id="signUp" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content signIn-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h3 class="modal-title">Sign Up</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input id="email" type="text" name="email" class="form-control cal" name="email" placeholder="Enter Your Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                            <input id="password" type="password" name="passid" class="form-control cal" placeholder="Enter a Password">
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-top:30px;">Close</button>
+                                    <button id="signUpSubmit" type="submit" class="btn btn-default" style="margin-top:30px;">Submit</button>
+                                    <button class="fb-login-button" id="signUpFacebook" type="submit" class="btn btn-default" style="margin-top:30px;">Sign Up with Facebook</button>
+                                    <!-- <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div> -->
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End Modal signUp -->
+
 
             </div>
-          </div><!-- End Modal findSitter -->
-
-          <!-- Modal logIn-->
-          <div id="logIn" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-              <!-- Modal content logIn-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h3 class="modal-title">Log In</h3>
-                </div>
-                <div class="modal-body">
-                  <form>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input id="email" type="text" name="email" class="form-control cal" name="email" placeholder="Your Email">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                      <input id="password" type="text" name="passid" class="form-control cal" placeholder="Your Password">
-                    </div>
-                  </div> 
-               
-                  <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-top:30px;">Close</button>
-                  <button id="signUpSubmit" type="submit" class="btn btn-default" style="margin-top:30px;">Submit</button>
-                  <button class="fb-login-button" id="signUpFacebook" type="submit" class="btn btn-default" style="margin-top:30px;">Log in with Facebook</button>
-                  <!-- <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div> -->
-                </form>
-                  
-                </div>
-              </div>
-
-            </div>
-          </div><!-- End Modal LogIn -->
-
-
-          <!-- Modal signUp-->
-          <div id="signUp" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-              <!-- Modal content signIn-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h3 class="modal-title">Sign Up</h3>
-                </div>
-                <div class="modal-body">
-                  <form>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input id="email" type="text" name="email" class="form-control cal" name="email" placeholder="Enter Your Email">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                      <input id="password" type="password" name="passid" class="form-control cal" placeholder="Enter a Password">
-                    </div>
-                  </div> 
-               
-                  <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-top:30px;">Close</button>
-                  <button id="signUpSubmit" type="submit" class="btn btn-default" style="margin-top:30px;">Submit</button>
-                  <button class="fb-login-button" id="signUpFacebook" type="submit" class="btn btn-default" style="margin-top:30px;">Sign Up with Facebook</button>
-                  <!-- <div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div> -->
-                </form>
-                  
-                </div>
-              </div>
-
-            </div>
-          </div><!-- End Modal signUp -->
-
 
         </div>
-
-      </div>
 
     </div>
 
 
- 
-<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 
 
-<script
-      src="https://code.jquery.com/jquery-2.2.4.min.js"
-      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-      crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
-<script src="js/script.js"></script>
-<script src="js/getLocation.js"></script>
-<!--  <script src="js/registration-form-validation.js"></script>-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/getLocation.js"></script>
+    <!--  <script src="js/registration-form-validation.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <!-- Include Date Range Picker -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-<script type="text/javascript">
-          $(function() {
-              $('input[name="daterange"]').daterangepicker();
-          });
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('input[name="daterange"]').daterangepicker();
+        });
     </script>
-  
-  </body>
+
+
+</body>
+
 </html>
