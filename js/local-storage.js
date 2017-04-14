@@ -14,5 +14,4 @@ if (window.localstorage) {
 		localStorage.setItem("address", address.value);
 	}, false);
 
-
 }
